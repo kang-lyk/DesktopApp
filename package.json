@@ -1,0 +1,23 @@
+{
+  "name": "lyk",
+  "devDependencies": {
+    "electron": "^10.1.1",
+    "electron-builder": "^22.8.0",
+    "nodemon": "^2.0.4"
+  },
+  "version": "v0.1.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "nodemon --watch main.js renderer.js --exec 'electron .'",
+    "nodemon-h": "nodemon -h",
+    "build": "electron-builder",
+    "dist": "electron-builder --dir"
+  },
+  "build": {
+    "appId": "lyklyk",
+    "category": "public.app-category.education",
+    "dmg": {
+
+    }
+  }
+}
