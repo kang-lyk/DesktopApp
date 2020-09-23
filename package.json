@@ -1,8 +1,10 @@
 {
   "name": "lyk",
+  "productName": "lyk",
   "devDependencies": {
     "electron": "^10.1.1",
     "electron-builder": "^22.8.0",
+    "electron-builder-squirrel-windows": "^22.9.1",
     "nodemon": "^2.0.4"
   },
   "version": "v0.1.0",
@@ -10,14 +12,58 @@
   "scripts": {
     "start": "nodemon --watch main.js renderer.js --exec 'electron .'",
     "nodemon-h": "nodemon -h",
-    "build": "electron-builder",
-    "dist": "electron-builder --dir"
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "dist-win64": "electron-builder --windows --x64"
   },
   "build": {
-    "appId": "lyklyk",
-    "category": "public.app-category.education",
+    "appId": "lyk",
+    "copyright": "©2020 Yongkang lu, Inc.",
+    "directories": {
+      "output": "dist/appPackager"
+    },
+    "mac": {
+      "category": "public.app-category.education",
+      "artifactName": "${productName}-${version}-${arch}.${ext}"
+    },
     "dmg": {
-
+      "background": "build/background.png",
+      "icon": "build/icon.icns",
+      "iconSize": 100,
+      "contents": [
+        {
+          "x": 380,
+          "y": 280,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 110,
+          "y": 280,
+          "type": "file"
+        }
+      ],
+      "window": {
+        "width": 500,
+        "height": 500
+      }
+    },
+    "win": {
+      "target": "squirrel",
+      "icon": "build/icon.ico",
+      "artifactName": "${productName}-Web-Setup-${version}.${ext}",
+      "publisherName": "yongkang lu, Inc."
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true
     }
   }
 }
