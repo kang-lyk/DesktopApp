@@ -1,9 +1,15 @@
 const { ipcRenderer } = require('electron')
-
 document.querySelector('#j-send').onclick = function () {
     const textVal = document.querySelector('#j-text').value || ''
     ipcRenderer.send('message', textVal)
+    new Notification (
+        'Title', 
+        {
+            body: textVal
+        }
+    )
 }
+
 
 window.addEventListener('DOMContentLoaded', () => {
     ipcRenderer.on('reqly', (event, arg) => {
