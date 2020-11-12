@@ -10,7 +10,6 @@ document.querySelector('#j-send').onclick = function () {
     )
 }
 
-
 window.addEventListener('DOMContentLoaded', () => {
     ipcRenderer.on('reqly', (event, arg) => {
         alert(arg)
