@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>桌面应用</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<!--
+<textarea name="" id="j-text" cols="30" rows="10"></textarea>
+<button id="j-send">发送消息</button> -->
+<label >
+    <input
+        type="file"
+        accept=".jpg,.jpeg,.png,.gif.png"
+        multiple="multiple"
+        id="j-changeFile"
+    >
+</label>
+<p>
+    输出质量:
+    <input
+        type="range"
+        name="quality"
+        value="98"
+        max="98"
+        id="j-range"
+    >
+    <span id="j-rangeText">98%</span>
+</p>
+<p>
+    <button id="j-save">保存到文件夹</button>
+</p>
+<div id="j-imgList"></div>
+<script src="renderer.js"></script>
+</body>
+</html>

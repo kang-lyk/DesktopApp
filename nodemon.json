@@ -1,0 +1,8 @@
+{
+    "restartable": "rs",
+    "ext": "js json html jpg jpeg png gif webp",
+    "watch": [
+        "./src/**",
+        "./main.js"
+    ]
+}

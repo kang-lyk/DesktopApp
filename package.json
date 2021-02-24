@@ -11,10 +11,7 @@
   "version": "v0.1.0",
   "main": "main.js",
   "scripts": {
-    "build": "webpack --mode=production",
-    "watch": "webpack --watch",
-    "server": "webpack serve --config ./webpack.config.js",
-    "start": "nodemon --watch main.js renderer.js --exec 'electron .'",
+    "start": "nodemon --config nodemon.json --exec 'electron .'",
     "nodemon-h": "nodemon -h",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",

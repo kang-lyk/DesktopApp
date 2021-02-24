@@ -1,10 +1,14 @@
-const { app, BrowserWindow, ipcMain } = require('electron')
+const { app,
+    BrowserWindow,
+    ipcMain,
+    dialog
+} = require('electron')
 
 class AppWindow extends BrowserWindow {
-    constructor (config = {}, fileHtml = 'index.html') {
+    constructor (config = {}, fileHtml = './src/index.html') {
         const defautConfig = {
-            width: 900,
-            height: 900,
+            width: 1024,
+            height: 500,
             webPreferences: {
                 nodeIntegration: true
             }
@@ -26,12 +30,12 @@ function createWindow () {
         // console.log(event);
         console.log(`收到消息:${arg}`)
         new AppWindow({
-            width: 200,
-            height: 200,
+            width: 800,
+            height: 800,
             // frame: false,
             transparent: true,
             parent: win
-        }, 'index2.html')
+        }, 'index.html')
         // event.sender.send('reqly', '我已收到消息')
     })
 }
@@ -39,3 +43,14 @@ function createWindow () {
 app
     .whenReady()
     .then(createWindow)
+
+ipcMain.on('open-save-img', (event) => {
+    dialog.showOpenDialog({
+        properties: ['openFile', 'openDirectory', 'multiSelections']
+    }, (files) => {
+        // console.log(files)
+        if (files) {
+            event.sender.send('after-save', files)
+        }
+    })
+})
